@@ -7,26 +7,30 @@
     border-radius: 5px;
   }
 
+$translate-input: 15%;
+
 .controllers{
     margin-top: 2em;
     position: relative;
     i{
-        font-size: 1.4em;
+        font-size: 1.6em;
         opacity: 0.3;
-        position: absolute;
-        top: 1em;
-        left: 2em;
+        position: relative;
+        left: 10%;
+        
     }
 
     &-search{
         @include input-style;
         
         &-input{
-            width: 77%;
+            width: 100% - ($translate-input + 2%);
             height: 100%;
             border: none;
-            transform: translateX(30%);
+            transform: translateX($translate-input);
             position: relative;
+            padding: 1em;
+            font-size: 1em;
           
             
             &::placeholder{

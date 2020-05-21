@@ -16,13 +16,10 @@ optionsContainer.addEventListener("click", async function(e){
 
 searchCountrie.addEventListener("input", async function(e){
     e.preventDefault();
-    console.log(this.value);
-
     const inputShearchValue = this.value;
 
     if(inputShearchValue === ""){
         renderAllCountries();
-        console.log("vacion");
     }
 
     if(inputShearchValue !== ""){

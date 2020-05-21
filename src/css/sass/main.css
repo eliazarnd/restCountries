@@ -74,11 +74,10 @@
   position: relative;
 }
 .controllers i {
-  font-size: 1.4em;
+  font-size: 1.6em;
   opacity: 0.3;
-  position: absolute;
-  top: 1em;
-  left: 2em;
+  position: relative;
+  left: 10%;
 }
 .controllers-search {
   height: 4em;
@@ -86,11 +85,13 @@
   border-radius: 5px;
 }
 .controllers-search-input {
-  width: 77%;
+  width: 83%;
   height: 100%;
   border: none;
-  transform: translateX(30%);
+  transform: translateX(15%);
   position: relative;
+  padding: 1em;
+  font-size: 1em;
 }
 .controllers-search-input::placeholder {
   font-size: 1.2em;
