@@ -35,9 +35,9 @@ async function renderAllCountries(){
        
         countriesCardTemplate.querySelector(".countrie-card-header > img").setAttribute("src", flag);
         countriesCardTemplate.querySelector(".countrie-name").textContent = name;
-        countriesCardTemplate.querySelector(".countrie-population").textContent = population;
-        countriesCardTemplate.querySelector(".countrie-region").textContent = region;
-        countriesCardTemplate.querySelector(".countrie-capital").textContent = capital;
+        countriesCardTemplate.querySelector(".countrie-population").innerHTML = `<span>Population: </span>${population}`;
+        countriesCardTemplate.querySelector(".countrie-region").innerHTML = `<span>Region: </span>${region}`;
+        countriesCardTemplate.querySelector(".countrie-capital").innerHTML = `<span>Capital: </span>${capital}`;
         
         const templateClone = document.importNode(countriesCardTemplate, true);
 
