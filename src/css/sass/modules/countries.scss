@@ -1,12 +1,16 @@
 .countries-container{
     margin-top: 2em;
     display: grid;
-    grid-template-columns: repeat(auto-fit, 1fr);
-    //grid-template-rows: minmax(min-content, 320px);
-    row-gap: 100px;
-    column-gap: 70px;
+    grid-template-columns: repeat(auto-fit, 300px);
+    grid-template-rows: minmax(min-content, 320px);
+    row-gap: 40px;
+    column-gap: 80px;
+    margin-left: auto;
+    margin-right: auto;
     //grid-auto-rows: 320px;
     justify-content: center;
+    align-content: center;
+    width: 80%;
 
     .countries-card{
         box-shadow: 0 0 2px var(--darkGray);
