@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,97 +10,108 @@
     <script src="https://kit.fontawesome.com/8e2f0401b1.js" crossorigin="anonymous"></script>
 
 </head>
+
 <body>
-    <header class = "header">
+    <header class="header">
         <h1>Where in the world?</h1>
         <p><i class="far fa-moon"></i>Dark Mode</p>
-        
+
     </header>
 
     <div class="wrapper">
-        <section class = "controllers">
-            <div class = "controllers-search">
+        <section class="controllers">
+            <div class="controllers-search">
                 <i class="fa fa-search"></i>
-                <input type="text" placeholder="Search for a country..." class = "controllers-search-input" id = "search-countrie">
+                <input type="text" placeholder="Search for a country..." class="controllers-search-input"
+                    id="search-countrie">
             </div>
-            <div class = "controllers-filter">
-                
-                    <input type="checkbox" name="drop-down-region" id="drop-down-region" class = "drop-down-region">
-                    <label for="drop-down-region">Filter by Region</label>
-                    <label for="drop-down-region" class="fas fa-caret-down icon"></label>
-                
+            <div class="controllers-filter">
+
+                <input type="checkbox" name="drop-down-region" id="drop-down-region" class="drop-down-region">
+                <label for="drop-down-region">Filter by Region</label>
+                <label for="drop-down-region" class="fas fa-caret-down icon"></label>
+
                 <div class="options-container">
                     <ul>
-                        <li class = "item"><a href="#">Africa</a></li>
-                        <li class = "item"><a href="#">Americas</a></li>
-                        <li class = "item"><a href="#">Asia</a></li>
-                        <li class = "item"><a href="#">Europe</a></li>
-                        <li class = "item"><a href="#">Oceania</a></li>
+                        <li class="item"><a href="#">Africa</a></li>
+                        <li class="item"><a href="#">Americas</a></li>
+                        <li class="item"><a href="#">Asia</a></li>
+                        <li class="item"><a href="#">Europe</a></li>
+                        <li class="item"><a href="#">Oceania</a></li>
                     </ul>
                 </div>
             </div>
-    
+
         </section>
     </div>
-        <main class = "countries-container">
-            
-        </main>
-
-        <template id = "countries-card-template">
-            
-            <article class = "countries-card">
-                <div class = "countrie-card-header">
-                    <img src="" alt="image-flag" srcset="">   
-                </div>
-                <div class = "countrie-card-body">
-                    <p class = "countrie-name"></p>
-                    <div class="countrie-info">
-                        <p class = "countrie-population"></p>
-                        <p class = "countrie-region"></p>
-                        <p class= "countrie-capital"></p>
-                    </div>
-                </div>
-            </article>
-            
-        </template>
-        
-
     
-    <!-- 
-    <div class = "countrie-modal">
-        <a href="#">Back</a>    
-        <div class = "countrie-container">
+    <main class="countries-container">
+    
+    </main>
 
-            <div class="countrie-flag-container">
-                <img src="" alt="">
+    <template id="countries-card-template">
+
+        <article class="countries-card">
+            <div class="countrie-card-header">
+                <img src="" alt="image-flag" srcset="">
             </div>
-            <div class = "countrie-details-container">
-                <div class="countrie-details">
-                    <div>
-                        <p class = "countrie-name">Belgie</p>
-                    </div>
-                    <div>
-                        <p class = "countrie-population">81525515</p>
-                        <p class = "countrie-region">Europe</p>
-                        <p class= "countrie-Berlin"></p>
-                        <p class = "countrie-name"></p>
-                        <p class = "countrie-population">81525515</p>
-                        <p class = "countrie-region">Europe</p>
-                        <p class= "countrie-Berlin"></p>
-                    </div>
-                    <div class = "countries-border">
-                        <p>Border Countries</p>
-                        <a href="#">France</a>
-                        <a href="#">Germany</a>
-                        <a href="#">Netherlands</a>
-                    </div>
+            <div class="countrie-card-body">
+                <p class="countrie-name"></p>
+                <div class="countrie-info">
+                    <p class="countrie-population"></p>
+                    <p class="countrie-region"></p>
+                    <p class="countrie-capital"></p>
                 </div>
             </div>
+        </article>
 
-        </div>
+    </template>
 
+    <div class="countrie-detail">
+            
+             <a href="#" class="btn-back">Back</a>
+             <div class = "countrie-container-details">
+                 
+             </div>
     </div>
- -->
- <script src="./src/js/app.js"></script>
+        
+<!-- 
+        <template id = "countrie-detail-template">
+            <div class="countrie-container">
+                <div class="countrie-flag-container">
+                    <img src="" alt="" class = "flag">
+                </div>
+                <div class="countrie-details-container">
+                    <div class="countrie-details">
+                        <div class = "countrie-name-container">
+                            <p class="countrie-name">Belgie</p>
+                        </div>
+                        </div>
+                        <div class = "countrie-main-information">
+                            <p>Native Name: Belgie</p>
+                            <p class="countrie-population">Population: 81525515</p>
+                            <p class="countrie-region">Region: Europe</p>
+                            <p class="countrie-sub-region">Sun Region: Western Europe</p>
+                            <p class="countrie-capital">Capital: Brussels</p>
+                        </div>
+                        <div class = "countrie-sub-information">
+                            <p>Top Level Domain: be</p>
+                            <p>Currencies: Euro</p>
+                            <p>Languages: Dutch, French, German</p>
+                        </div>
+                        <div class="countries-border">
+                            <p>Border Countries</p>
+                            <div class="border-countries-container">
+                                <a href="#" class = "border-countrie">France</a>
+                                <a href="#" class = "border-countrie">Germany</a>
+                                <a href="#" class = "border-countrie">Netherlands</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </template> -->
+
+    <script src="./src/js/app.js"></script>
 </body>
+
 </html>
