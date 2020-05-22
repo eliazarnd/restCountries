@@ -1,3 +1,13 @@
+#main{
+    width: 200px;
+    height: 200px;
+    background-color: rebeccapurple;
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+
 .countries-container{
     margin-top: 2em;
     display: grid;
@@ -11,6 +21,9 @@
     justify-content: center;
     align-content: center;
     width: 80%;
+    &:hover{
+        cursor: pointer;
+    }
 
     .countries-card{
         box-shadow: 0 0 2px var(--darkGray);
