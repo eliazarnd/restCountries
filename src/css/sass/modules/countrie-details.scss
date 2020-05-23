@@ -10,7 +10,7 @@
   background-color: var(--white);
   left: 0;
   right: 0;
-  height: 100vh;
+  height: 88vh;
   top: 100px;
   transform: translateX(-100vw);
   transition: transform 0.5s ease-in;
@@ -93,6 +93,14 @@
 
 .show-details {
   transform: translateX(0);
+}
+
+.display-none {
+  display: none;
+}
+
+.display-grid {
+  display: grid;
 }
 
 .countrie-name {
