@@ -1,33 +1,33 @@
-@import './header.scss';
-@import './controllers.scss';
-@import './countries.scss';
-@import './countrie-details.scss';
+@import "./header.scss";
+@import "./controllers.scss";
+@import "./countries.scss";
+@import "./countrie-details.scss";
 
-:root{
-    --darkBlue:hsl(209, 23%, 22%);
-    --veryDarkBlue: hsl(207, 26%, 17%);
-    --veryDarkBlue: hsl(200, 15%, 8%);
-    
-    --darkGray: hsl(0, 0%, 52%);
-    --veryLightGray: hsl(0, 0%, 98%);
-    --white: hsl(0, 0%, 100%);
+:root {
+  --darkBlue: hsl(209, 23%, 22%);
+  --veryDarkBlue: hsl(207, 26%, 17%);
+  --veryDarkBlue: hsl(200, 15%, 8%);
+
+  --darkGray: hsl(0, 0%, 52%);
+  --veryLightGray: hsl(0, 0%, 98%);
+  --white: hsl(0, 0%, 100%);
 }
 
-*{
-    box-sizing: border-box;
+* {
+  box-sizing: border-box;
 }
 
-body{
-    padding: 0;
-    margin: 0;
-    font-family: 'Nunito Sans';
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Nunito Sans";
 }
 
-p{
-    font-size: 10px;
+p {
+  font-size: 10px;
 }
 
-.wrapper{
-    margin-left: 1.5em;
-    margin-right: 1.5em;
+.wrapper {
+  margin-left: 1.5em;
+  margin-right: 1.5em;
 }
