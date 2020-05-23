@@ -163,6 +163,9 @@
 
 .countrie-container-details {
   margin-top: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .countrie-detail {
@@ -170,19 +173,20 @@
   background-color: var(--white);
   left: 0;
   right: 0;
-  height: 800px;
+  height: 100vh;
   top: 100px;
   transform: translateX(-100vw);
   transition: transform 0.5s ease-in;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 .countrie-detail .countrie-details-container {
   display: flex;
   flex-direction: column;
 }
 .countrie-detail .countrie-details-container p {
-  font-size: 0.9em;
+  font-size: 0.7em;
 }
 .countrie-detail .countrie-details-container p span {
   font-weight: 600;
@@ -196,9 +200,11 @@
   box-shadow: 0 1px 5px var(--darkGray);
   margin-top: 1em;
   width: 100px;
+  align-self: flex-start;
 }
 .countrie-detail .countrie-container {
   height: 100%;
+  width: 90%;
   padding-left: 1.5em;
   padding-right: 1.5em;
   display: flex;
@@ -214,15 +220,20 @@
   height: 100%;
 }
 .countrie-detail .border-countries-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  column-gap: 15px;
+  width: 100%;
+  /* display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(max-content, 1fr));
+  column-gap: 10px;
+  row-gap: 10px; */
+  display: flex;
+  flex-wrap: wrap;
 }
 .countrie-detail .border-countries-container .border-countrie {
   text-decoration: none;
-  font-size: 0.8em;
+  font-size: 0.7em;
   color: black;
-  display: inline-block;
+  margin-left: 10px;
+  margin-top: 10px;
   text-align: center;
   padding: 0.4em 1.6em;
   box-shadow: 0 1px 5px var(--darkGray);
@@ -242,7 +253,7 @@
 }
 
 :root {
-  --darkBlue:hsl(209, 23%, 22%);
+  --darkBlue: hsl(209, 23%, 22%);
   --veryDarkBlue: hsl(207, 26%, 17%);
   --veryDarkBlue: hsl(200, 15%, 8%);
   --darkGray: hsl(0, 0%, 52%);

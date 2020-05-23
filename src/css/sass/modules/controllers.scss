@@ -1,43 +1,40 @@
-
-@import './select-component.scss';
+@import "./select-component.scss";
 
 @mixin input-style {
-    height: 4em;
-    box-shadow: 0 1px 10px var(--darkGray);
-    border-radius: 5px;
-  }
+  height: 4em;
+  box-shadow: 0 1px 10px var(--darkGray);
+  border-radius: 5px;
+}
 
 $translate-input: 15%;
 
-.controllers{
-    margin-top: 10em;
+.controllers {
+  margin-top: 10em;
+  position: relative;
+  i {
+    font-size: 1.6em;
+    opacity: 0.3;
     position: relative;
-    i{
-        font-size: 1.6em;
-        opacity: 0.3;
-        position: relative;
-        left: 10%;
-        
-    }
+    left: 10%;
+  }
 
-    &-search{
-        @include input-style;
-        
-        &-input{
-            width: 100% - ($translate-input + 2%);
-            height: 100%;
-            border: none;
-            transform: translateX($translate-input);
-            position: relative;
-            padding: 1em;
-            font-size: 1em;
-            
-            &::placeholder{
-                font-size: 1.2em;
-                color: var(--darkGray);
-                opacity: 0.5;
-            }
-        }
+  &-search {
+    @include input-style;
+
+    &-input {
+      width: 100% - ($translate-input + 2%);
+      height: 100%;
+      border: none;
+      transform: translateX($translate-input);
+      position: relative;
+      padding: 1em;
+      font-size: 1em;
+
+      &::placeholder {
+        font-size: 1.2em;
+        color: var(--darkGray);
+        opacity: 0.5;
+      }
     }
-  
+  }
 }
