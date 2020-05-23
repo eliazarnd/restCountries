@@ -13,6 +13,9 @@ document.addEventListener("click", (e) => {
   if (e.target.matches(".countrie-card-header > img")) {
     console.log("Has dado click en ", e.target.getAttribute("alt"));
     countrieDetailContainer.classList.add("show-details");
+    setTimeout(function () {
+      countrieDetailContainer.style.position = "absolute";
+    }, 2000);
     renderCountriesDetails(e.target.getAttribute("alt"));
   }
 
@@ -31,6 +34,14 @@ optionsContainer.addEventListener("click", async function (e) {
   const filterRegion = e.target.textContent;
 
   renderCountriesByRegion(filterRegion);
+});
+
+countrieDetailContainer.addEventListener("transitionend", function () {
+  const main = document.querySelector(".countries-container");
+
+  main.classList.toggle("display-none");
+
+  countrieDetailContainer.style.position = "fixed";
 });
 
 searchCountrie.addEventListener("input", async function (e) {
@@ -172,7 +183,7 @@ async function renderCountrieDetailInContainer(countrie) {
                 <div class = "countrie-main-information">
                     <p><span>Native Name: </span>${countrie[0].nativeName}</p>
                     <p class="countrie-population"><span>Population: </span> ${countrie[0].population}</p>
-                    <p class="countrie-region"><span>Region: </span> ${countrie[0].population}</p>
+                    <p class="countrie-region"><span>Region: </span> ${countrie[0].region}</p>
                     <p class="countrie-sub-region"><span>Sub region: </span> ${countrie[0].subregion}</p>
                     <p class="countrie-capital"><span>Capital: </span>${countrie[0].capital}</p>
                 </div>
@@ -189,8 +200,6 @@ async function renderCountrieDetailInContainer(countrie) {
                 </div>
             </div>
         </div>`;
-
-  console.log(countriesDetailsTemplate);
 
   const details = document.createElement("div");
   details.classList.add("countrie-container-details");
