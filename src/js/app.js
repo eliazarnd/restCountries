@@ -6,287 +6,159 @@ const main = document.getElementById("main");
 const countrieDetailContainer = document.querySelector(".countrie-detail");
 const btnBack = document.querySelector(".btn-back");
 
+document.addEventListener("click", (e) => {
+  //e.preventDefault();
+  console.log(e.target);
 
-btnBack.addEventListener("click", function(){
-    console.log("back");
-    countrieDetailContainer.classList.remove("show-details");
-})
-
-console.log(countrieDetailContainer);
-
-document.addEventListener("DOMContentLoaded", function(event) {
-    console.log("DOM fully loaded and parsed");
-  });
-
-optionsContainer.addEventListener("click", async function(e){
-
-    const filterRegion = e.target.textContent;
-    
-    renderCountriesByRegion(filterRegion);
-    
-
-});
-
-
-searchCountrie.addEventListener("input", async function(e){
-    e.preventDefault();
-    const inputShearchValue = this.value;
-
-    if(inputShearchValue === ""){
-        renderAllCountries();
-    }
-
-    if(inputShearchValue !== ""){
-        renderCountriesByName(inputShearchValue);
-    }
-
-
-});
-
-countriesContainer.addEventListener("click", function(e){
-    console.log(e.target);
-})
-
-
-async function getAllCountriesInformation(url){
-    const countrieInformation = [];
-        
-        const countries = await fetch(url);
-        
-        const statusCode = countries.status;
-        const countriesJson = await countries.json();
-        console.log(countriesJson);
-
-        if(statusCode === 404){
-            
-        }else{
-    
-            for (const currentCountrie of countriesJson) {
-                const countrie = {
-                    flag: currentCountrie.flag,
-                    name: currentCountrie.name,
-                    population: currentCountrie.population,
-                    region: currentCountrie.region,
-                    capital: currentCountrie.capital
-                };        
-                countrieInformation.push(countrie);
-            }
-        }
-
-
-    
-    return countrieInformation;
-}
-
-
-
-async function getAllCountriesDetailsInformation(url){
-    const countrieInformation = [];
-        
-        const countries = await fetch(url);
-        
-        const statusCode = countries.status;
-        const countriesJson = await countries.json();
-       
-
-        if(statusCode === 404){
-            
-        }else{
-    
-            for (const currentCountrie of countriesJson) {
-                const countrie = {
-                    flag: currentCountrie.flag,
-                    name: currentCountrie.name,
-                    nativeName: currentCountrie.nativeName,
-                    population: currentCountrie.population,
-                    region: currentCountrie.region,
-                    subregion: currentCountrie.subregion,
-                    capital: currentCountrie.capital,
-                    topLevelDomain: currentCountrie.topLevelDomain,
-                    currencies: currentCountrie.currencies[0].name,
-                    languages: currentCountrie.languages,
-                    borders: currentCountrie.borders 
-                };        
-                countrieInformation.push(countrie);
-            }
-        }
-
-
-    
-    return countrieInformation;
-}
-
-
-async function getCountriesFilterByRegion(region = "Asia"){
-    
-    const countries = await getAllCountriesInformation(`https://restcountries.eu/rest/v2/all`);
-    const filterRegion = countries.filter(countrie => countrie.region === region);
-   
-    return filterRegion;
-
-}
-
-async function renderAllCountries(){
-
-    const countries = await getAllCountriesInformation(`https://restcountries.eu/rest/v2/all`);
-    
-    const countrieFragment = document.createDocumentFragment();
-    const countriesCardTemplate = document.getElementById("countries-card-template").content;
-    
-    
-    const countriesContainers = document.querySelector(".countries-container");
-    const main = document.createElement("main");
-    main.classList.add("countries-container");
-    main.addEventListener("click", getCountriesDetails);
-   //let countrieTemplate = "";
-    for (const currentCountrie of countries) {
-        
-        const {flag, name, population, region, capital} = currentCountrie;
-        
-        countriesCardTemplate.querySelector(".countrie-card-header > img").setAttribute("src", flag);
-        countriesCardTemplate.querySelector(".countrie-card-header > img").setAttribute("alt", name);
-        countriesCardTemplate.querySelector(".countrie-name").textContent = name;
-        countriesCardTemplate.querySelector(".countrie-population").innerHTML = `<span>Population: </span>${population}`;
-        countriesCardTemplate.querySelector(".countrie-region").innerHTML = `<span>Region: </span>${region}`;
-        countriesCardTemplate.querySelector(".countrie-capital").innerHTML = `<span>Capital: </span>${capital}`;
-        
-        const templateClone = document.importNode(countriesCardTemplate, true);
-        
-        countrieFragment.append(templateClone); 
-         
-    }   
-       main.appendChild(countrieFragment);
-       countriesContainers.replaceWith(main);
-       //countriesContainers.appendChild(countrieFragment);
-       //countriesCard = document.querySelectorAll(".countries-card");
-       
-/* 
-        countriesCard = document.querySelectorAll("countries-card countries-card-header");
-        console.log(countriesCard); */
-}
-
-async function renderCountriesByRegion(filterRegion){
-    
-    const countriesFilterByRegion = await getCountriesFilterByRegion(filterRegion);
-    
-    const countrieFragment = document.createDocumentFragment();
-    const countriesCardTemplate = document.getElementById("countries-card-template").content;
-
-    const countriesContainers = document.querySelector(".countries-container");
-
-        const main = document.createElement("main");
-        main.classList.add("countries-container");
-
-        main.addEventListener("click", function(e){
-            console.log(e.target);
-        })
-
-    for (const currentCountrie of countriesFilterByRegion) {
-        
-        const {flag, name, population, region, capital} = currentCountrie;
-       
-        countriesCardTemplate.querySelector(".countrie-card-header > img").setAttribute("src", flag);
-        countriesCardTemplate.querySelector(".countrie-name").textContent = name;
-        countriesCardTemplate.querySelector(".countrie-population").innerHTML = `<span>Population: </span>${population}`;
-        countriesCardTemplate.querySelector(".countrie-region").innerHTML = `<span>Region: </span>${region}`;
-        countriesCardTemplate.querySelector(".countrie-capital").innerHTML = `<span>Capital: </span>${capital}`;
-        
-        const templateClone = document.importNode(countriesCardTemplate, true);
-
-        countrieFragment.append(templateClone);    
-        
-    }   
-        main.appendChild(countrieFragment);
-        countriesContainers.replaceWith(main);
-        
-        
-}
-
-
-
-async function renderCountriesByName(name){
-    
-    const countrie = await getAllCountriesInformation(`https://restcountries.eu/rest/v2/name/${name}`);
-    
-    
-    const countrieFragment = document.createDocumentFragment();
-    const countriesCardTemplate = document.getElementById("countries-card-template").content;
-
-    const countriesContainers = document.querySelector(".countries-container");
-
-        const main = document.createElement("main");
-        main.classList.add("countries-container");
-    
-        main.addEventListener("click", function(e){
-            console.log(e.target);
-        })
-
-    if(countrie.length === 0){
-        const errorMessage = document.createElement("p");
-        errorMessage.textContent = "No existe ningun pais con ese nombre";
-        main.appendChild(errorMessage);
-        countriesContainers.replaceWith(main);
-    }
-
-    for (const currentCountrie of countrie) {
-        
-        const {flag, name, population, region, capital} = currentCountrie;
-       
-        countriesCardTemplate.querySelector(".countrie-card-header > img").setAttribute("src", flag);
-        countriesCardTemplate.querySelector(".countrie-name").textContent = name;
-        countriesCardTemplate.querySelector(".countrie-population").innerHTML = `<span>Population: </span>${population}`;
-        countriesCardTemplate.querySelector(".countrie-region").innerHTML = `<span>Region: </span>${region}`;
-        countriesCardTemplate.querySelector(".countrie-capital").innerHTML = `<span>Capital: </span>${capital}`;
-        
-        const templateClone = document.importNode(countriesCardTemplate, true);
-
-        countrieFragment.append(templateClone);    
-        
-    }   
-        main.appendChild(countrieFragment);
-        countriesContainers.replaceWith(main);
-        
-}
-
-async function getCountriesDetails(e){
-    
-
+  if (e.target.matches(".countrie-card-header > img")) {
+    console.log("Has dado click en ", e.target.getAttribute("alt"));
     countrieDetailContainer.classList.add("show-details");
+    renderCountriesDetails(e.target.getAttribute("alt"));
+  }
 
-    const countrieName = e.target.getAttribute("alt");
-    
-    renderCountriesDetails(countrieName);
+  if (e.target.matches(".border-countrie")) {
+    console.log(e.target.textContent);
+    renderCountrieBorderDetails(e.target.textContent);
+  }
+});
 
+btnBack.addEventListener("click", function () {
+  console.log("back");
+  countrieDetailContainer.classList.remove("show-details");
+});
+
+optionsContainer.addEventListener("click", async function (e) {
+  const filterRegion = e.target.textContent;
+
+  renderCountriesByRegion(filterRegion);
+});
+
+searchCountrie.addEventListener("input", async function (e) {
+  e.preventDefault();
+  const inputShearchValue = this.value;
+
+  if (inputShearchValue === "") {
+    renderAllCountries();
+  }
+
+  if (inputShearchValue !== "") {
+    renderCountriesByName(inputShearchValue);
+  }
+});
+
+async function getAllCountriesInformation(url) {
+  const countrieInformation = [];
+
+  const countries = await fetch(url);
+
+  const statusCode = countries.status;
+  const countriesJson = await countries.json();
+  console.log(countriesJson);
+
+  if (statusCode === 404) {
+  } else {
+    for (const currentCountrie of countriesJson) {
+      const countrie = {
+        flag: currentCountrie.flag,
+        name: currentCountrie.name,
+        population: currentCountrie.population,
+        region: currentCountrie.region,
+        capital: currentCountrie.capital,
+      };
+      countrieInformation.push(countrie);
+    }
+  }
+
+  return countrieInformation;
 }
 
+async function getAllCountriesDetailsInformation(url) {
+  const countrieInformation = [];
 
-async function renderCountriesDetails(countrieName){
-    
-    const countrie = await getAllCountriesDetailsInformation(`https://restcountries.eu/rest/v2/name/${countrieName}`);
-    
+  const countries = await fetch(url);
 
-    const borders = `
-                        <a href="#" class = "border-countrie">France</a>
-                        <a href="#" class = "border-countrie">Germany</a>
-                        <a href="#" class = "border-countrie">Netherlands</a>`;
+  const statusCode = countries.status;
+  const countriesJson = await countries.json();
 
-    console.log(countrie[0].borders);
-    
-    const div = document.createElement("div");
-    countrie[0].borders.forEach((border) =>{
-        const borderLink = document.createElement("a");
-        borderLink.classList.add("border-countrie");
-        borderLink.textContent = border;
-        div.appendChild(borderLink);
-        
-    });
-    let languageText = document.createTextNode("");
-    countrie[0].languages.forEach((language) =>{
-        languageText.textContent += language.name +", ";
-        
-    })
-   
-    const countriesDetailsTemplate = `
+  if (statusCode === 404) {
+  } else {
+    for (const currentCountrie of countriesJson) {
+      const countrie = {
+        flag: currentCountrie.flag,
+        name: currentCountrie.name,
+        alphaCode: currentCountrie.alpha3Code,
+        nativeName: currentCountrie.nativeName,
+        population: currentCountrie.population,
+        region: currentCountrie.region,
+        subregion: currentCountrie.subregion,
+        capital: currentCountrie.capital,
+        topLevelDomain: currentCountrie.topLevelDomain,
+        currencies: currentCountrie.currencies[0].name,
+        languages: currentCountrie.languages,
+        borders: currentCountrie.borders,
+      };
+      countrieInformation.push(countrie);
+    }
+  }
+
+  return countrieInformation;
+}
+
+async function getCountriesFilterByRegion(region = "Asia") {
+  const countries = await getAllCountriesInformation(
+    `https://restcountries.eu/rest/v2/all`
+  );
+  const filterRegion = countries.filter(
+    (countrie) => countrie.region === region
+  );
+
+  return filterRegion;
+}
+
+function renderCountriesInContainer(countries) {
+  const countrieFragment = document.createDocumentFragment();
+  const countriesCardTemplate = document.getElementById(
+    "countries-card-template"
+  ).content;
+
+  const countriesContainers = document.querySelector(".countries-container");
+  const main = document.createElement("main");
+  main.classList.add("countries-container");
+
+  for (const currentCountrie of countries) {
+    const { flag, name, population, region, capital } = currentCountrie;
+
+    countriesCardTemplate
+      .querySelector(".countrie-card-header > img")
+      .setAttribute("src", flag);
+    countriesCardTemplate
+      .querySelector(".countrie-card-header > img")
+      .setAttribute("alt", name);
+    countriesCardTemplate.querySelector(".countrie-name").textContent = name;
+    countriesCardTemplate.querySelector(
+      ".countrie-population"
+    ).innerHTML = `<span>Population: </span>${population}`;
+    countriesCardTemplate.querySelector(
+      ".countrie-region"
+    ).innerHTML = `<span>Region: </span>${region}`;
+    countriesCardTemplate.querySelector(
+      ".countrie-capital"
+    ).innerHTML = `<span>Capital: </span>${capital}`;
+
+    const templateClone = document.importNode(countriesCardTemplate, true);
+
+    countrieFragment.append(templateClone);
+  }
+  main.appendChild(countrieFragment);
+  countriesContainers.replaceWith(main);
+}
+
+async function renderCountrieDetailInContainer(countrie) {
+  const borderCountries = await renderBoderCountries(countrie[0].borders);
+
+  const languages = renderCountrieLanguages(countrie[0].languages);
+
+  const countriesDetailsTemplate = `
     <div class="countrie-container">
         <div class="countrie-flag-container">
             <img src="${countrie[0].flag}" alt="" class = "flag">
@@ -307,27 +179,108 @@ async function renderCountriesDetails(countrieName){
                 <div class = "countrie-sub-information">
                     <p><span>Top Level Domain: </span> ${countrie[0].topLevelDomain}</p>
                     <p><span>Currencies: </span> ${countrie[0].currencies}</p>
-                    <p><span>Languages: </span> ${languageText.textContent}</p>
+                    <p><span>Languages: </span> ${languages.textContent}</p>
                 </div>
                 <div class="countries-border">
                     <p>Border Countries</p>
                     <div class="border-countries-container">
-                        ${div.innerHTML}
+                        ${borderCountries.innerHTML}
                     </div>
                 </div>
             </div>
         </div>`;
 
-        
-        const details = document.createElement("div");
-        details.classList.add("countrie-container-details");
-        details.innerHTML = countriesDetailsTemplate;
-        console.log(details);
-        document.querySelector(".countrie-container-details").replaceWith(details);
+  console.log(countriesDetailsTemplate);
 
-    console.log(countrie);
+  const details = document.createElement("div");
+  details.classList.add("countrie-container-details");
+  details.innerHTML = countriesDetailsTemplate;
+
+  document.querySelector(".countrie-container-details").replaceWith(details);
+}
+
+async function renderAllCountries() {
+  const countries = await getAllCountriesInformation(
+    `https://restcountries.eu/rest/v2/all`
+  );
+
+  renderCountriesInContainer(countries);
+}
+
+async function renderCountriesByRegion(filterRegion) {
+  const countriesFilterByRegion = await getCountriesFilterByRegion(
+    filterRegion
+  );
+
+  renderCountriesInContainer(countriesFilterByRegion);
+}
+
+async function renderCountriesByName(name) {
+  const countrie = await getAllCountriesInformation(
+    `https://restcountries.eu/rest/v2/name/${name}`
+  );
+
+  if (countrie.length === 0) {
+    console.log("No hay pais");
+
+    const main = document.createElement("main");
+    main.classList.add("countries-container");
+
+    const errorMessage = document.createElement("p");
+    errorMessage.textContent = "No existe ningun pais con ese nombre";
+    main.appendChild(errorMessage);
+    countriesContainers.replaceWith(main);
+  } else {
+    renderCountriesInContainer(countrie);
+  }
+}
+
+async function renderBoderCountries(borders) {
+  const div = document.createElement("div");
+
+  for (const border of borders) {
+    const borderLink = document.createElement("a");
+    borderLink.classList.add("border-countrie");
+    borderLink.textContent = await getNameCountrieByCode(border);
+    div.appendChild(borderLink);
+  }
+
+  return div;
+}
+
+async function getNameCountrieByCode(code) {
+  const countrieCode = await fetch(
+    `https://restcountries.eu/rest/v2/alpha/${code}`
+  );
+  const borderCountrieJson = await countrieCode.json();
+  const borderCountrieName = borderCountrieJson.name;
+
+  return borderCountrieName;
+}
+
+function renderCountrieLanguages(languages) {
+  let languageText = document.createTextNode("");
+  languages.forEach((language) => {
+    languageText.textContent += language.name + ", ";
+  });
+
+  return languageText;
+}
+
+async function renderCountriesDetails(countrieName) {
+  const countrie = await getAllCountriesDetailsInformation(
+    `https://restcountries.eu/rest/v2/name/${countrieName}`
+  );
+
+  renderCountrieDetailInContainer(countrie);
+}
+
+async function renderCountrieBorderDetails(countrieFullName) {
+  const countrie = await getAllCountriesDetailsInformation(
+    `https://restcountries.eu/rest/v2/name/${countrieFullName}?fullText=true`
+  );
+
+  renderCountrieDetailInContainer(countrie);
 }
 
 renderAllCountries();
-
-
