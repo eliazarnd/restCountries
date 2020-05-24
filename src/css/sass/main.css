@@ -1,6 +1,6 @@
 .header {
-  background-color: var(--elementsColor);
-  box-shadow: 0 1px 10px var(--fontColor);
+  background-color: var(--veryLightGray);
+  box-shadow: 0 1px 10px var(--darkBlue);
   display: flex;
   justify-content: space-between;
   align-items: baseline;
@@ -14,6 +14,9 @@
   right: 0;
   z-index: 10;
   transition: var(--fadeTransition);
+}
+body.dark .header {
+  background-color: var(--darkBlue);
 }
 .header h1 {
   font-size: 1em;
@@ -33,7 +36,7 @@
 
 .controllers-filter {
   margin-top: 4em;
-  box-shadow: 0 1px 10px var(--fontColor);
+  box-shadow: 0 1px 10px var(--darkBlue);
   border-radius: 5px;
   width: 70%;
   min-width: 200px;
@@ -42,6 +45,9 @@
   position: relative;
   background-color: var(--elementsColor);
   transition: var(--fadeTransition);
+}
+body.dark .controllers-filter {
+  background-color: var(--darkBlue);
 }
 .controllers-filter .drop-down-region {
   display: none;
@@ -55,17 +61,20 @@
   cursor: pointer;
 }
 .controllers-filter .options-container {
-  background-color: var(--elementsColor);
+  background-color: var(--veryLightGray);
   top: 3em;
   left: 0;
   position: absolute;
   width: 100%;
   margin-top: 1em;
   display: none;
-  box-shadow: 0 1px 10px var(--fontColor);
+  box-shadow: 0 1px 10px var(--darkBlue);
   border-radius: 5px;
   overflow-y: hidden;
   z-index: 10;
+}
+body.dark .controllers-filter .options-container {
+  background-color: var(--darkBlue);
 }
 .controllers-filter .options-container ul {
   padding: 0;
@@ -79,6 +88,9 @@
   color: var(--textColor);
   display: block;
   padding: 0.5em 2em;
+}
+body.dark .controllers-filter .options-container .item a {
+  color: var(--white);
 }
 .controllers-filter .options-container .item a:hover {
   background-color: var(--darkGray);
@@ -95,12 +107,18 @@
   left: 10%;
   color: var(--textColor);
 }
+body.dark .controllers i {
+  color: var(--white);
+}
 .controllers-search {
   height: 4em;
-  box-shadow: 0 1px 10px var(--fontColor);
+  box-shadow: 0 1px 10px var(--darkBlue);
   border-radius: 5px;
-  background-color: var(--inputColor);
   transition: var(--fadeTransition);
+  background-color: var(--veryLightGray);
+}
+body.dark .controllers-search {
+  background-color: var(--darkBlue);
 }
 .controllers-search-input {
   width: 83%;
@@ -113,10 +131,17 @@
   background-color: var(--inputColor);
   transition: var(--fadeTransition);
 }
+body.dark .controllers-search-input {
+  background-color: var(--darkBlue);
+  color: var(--white);
+}
 .controllers-search-input::placeholder {
   font-size: 1.2em;
   color: var(--textColor);
   opacity: 0.8;
+}
+body.dark .controllers-search-input::placeholder {
+  color: var(--white);
 }
 
 #main {
@@ -144,10 +169,13 @@
   cursor: pointer;
 }
 .countries-container .countries-card {
-  box-shadow: 0 0 2px var(--fontColor);
+  box-shadow: 0 0 2px var(--darkBlue);
   border-radius: 5px;
   background-color: var(--elementsColor);
   transition: var(--fadeTransition);
+}
+body.dark .countries-container .countries-card {
+  background-color: var(--darkBlue);
 }
 .countries-container .countrie-card-header img {
   border-top-left-radius: 5px;
@@ -185,7 +213,7 @@
 
 .countrie-detail {
   position: fixed;
-  background-color: var(--backgroundColor);
+  background-color: var(--veryLightGray);
   left: 0;
   right: 0;
   height: 88vh;
@@ -195,6 +223,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+body.dark .countrie-detail {
+  background-color: var(--veryDarkBlue);
 }
 .countrie-detail .countrie-details-container {
   display: flex;
@@ -216,6 +247,9 @@
   margin-top: 1em;
   width: 100px;
   align-self: flex-start;
+}
+body.dark .countrie-detail .btn-back {
+  color: var(--white);
 }
 .countrie-detail .countrie-container {
   height: 100%;
@@ -247,7 +281,11 @@
   margin-top: 10px;
   text-align: center;
   padding: 0.4em 1.6em;
-  box-shadow: 0 1px 5px var(--darkGray);
+  box-shadow: 0 1px 5px var(--darkBlue);
+}
+body.dark .countrie-detail .border-countries-container .border-countrie {
+  color: var(--white);
+  box-shadow: 0 1px 2px var(--white);
 }
 .countrie-detail .countries-border p {
   font-size: 1em;
@@ -303,21 +341,8 @@
   --darkGray: hsl(0, 0%, 52%);
   --veryLightGray: hsl(0, 0%, 98%);
   --white: hsl(0, 0%, 100%);
-  --fontColor: hsl(195, 17%, 9%);
-  /*
-    - Dark Blue (Dark Mode Elements): hsl(209, 23%, 22%)
-  - Very Dark Blue (Dark Mode Background): hsl(207, 26%, 17%)
-  - Very Dark Blue (Light Mode Text): hsl(200, 15%, 8%)
-  - Dark Gray (Light Mode Input): hsl(0, 0%, 52%)
-  - Very Light Gray (Light Mode Background): hsl(0, 0%, 98%)
-  - White (Dark Mode Text & Light Mode Elements): hsl(0, 0%, 100%)
-  */
-  --backgroundColor: var(--veryLightGray);
-  --elementsColor: var(--veryLightGray);
-  --textColor: var(--fontColor);
-  --inputColor: var(--veryLightGray);
-  --fadeTransition: background-color 0.5s ease-in;
-  --fadeText: color 0.5s ease-in;
+  --fadeTransition: background-color 0.2s ease-out;
+  --fadeText: color 0.2s ease-in;
 }
 
 * {
@@ -325,12 +350,16 @@
 }
 
 body {
-  color: var(--textColor);
-  background-color: var(--backgroundColor);
+  color: var(--fontColor);
+  background-color: var(--veryLightGray);
   padding: 0;
   margin: 0;
   font-family: "Nunito Sans";
   transition: var(--fadeTransition), var(--fadeText);
+}
+body.dark {
+  background-color: var(--veryDarkBlue);
+  color: var(--white);
 }
 
 p {

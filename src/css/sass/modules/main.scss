@@ -13,24 +13,9 @@
   --darkGray: hsl(0, 0%, 52%);
   --veryLightGray: hsl(0, 0%, 98%);
   --white: hsl(0, 0%, 100%);
-  --fontColor: hsl(195, 17%, 9%);
 
-  /*
-  - Dark Blue (Dark Mode Elements): hsl(209, 23%, 22%)
-- Very Dark Blue (Dark Mode Background): hsl(207, 26%, 17%)
-- Very Dark Blue (Light Mode Text): hsl(200, 15%, 8%)
-- Dark Gray (Light Mode Input): hsl(0, 0%, 52%)
-- Very Light Gray (Light Mode Background): hsl(0, 0%, 98%)
-- White (Dark Mode Text & Light Mode Elements): hsl(0, 0%, 100%)
-*/
-
-  --backgroundColor: var(--veryLightGray);
-  --elementsColor: var(--veryLightGray);
-  --textColor: var(--fontColor);
-  --inputColor: var(--veryLightGray);
-
-  --fadeTransition: background-color 0.5s ease-in;
-  --fadeText: color 0.5s ease-in;
+  --fadeTransition: background-color 0.2s ease-out;
+  --fadeText: color 0.2s ease-in;
 }
 
 * {
@@ -38,12 +23,17 @@
 }
 
 body {
-  color: var(--textColor);
-  background-color: var(--backgroundColor);
+  color: var(--fontColor);
+  background-color: var(--veryLightGray);
   padding: 0;
   margin: 0;
   font-family: "Nunito Sans";
   transition: var(--fadeTransition), var(--fadeText);
+
+  &.dark {
+    background-color: var(--veryDarkBlue);
+    color: var(--white);
+  }
 }
 
 p {

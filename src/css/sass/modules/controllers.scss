@@ -2,7 +2,7 @@
 
 @mixin input-style {
   height: 4em;
-  box-shadow: 0 1px 10px var(--fontColor);
+  box-shadow: 0 1px 10px var(--darkBlue);
   border-radius: 5px;
 }
 
@@ -17,13 +17,20 @@ $translate-input: 15%;
     position: relative;
     left: 10%;
     color: var(--textColor);
+
+    body.dark & {
+      color: var(--white);
+    }
   }
 
   &-search {
     @include input-style;
-
-    background-color: var(--inputColor);
     transition: var(--fadeTransition);
+    background-color: var(--veryLightGray);
+
+    body.dark & {
+      background-color: var(--darkBlue);
+    }
     &-input {
       width: 100% - ($translate-input + 2%);
       height: 100%;
@@ -34,11 +41,19 @@ $translate-input: 15%;
       font-size: 1em;
       background-color: var(--inputColor);
       transition: var(--fadeTransition);
+      body.dark & {
+        background-color: var(--darkBlue);
+        color: var(--white);
+      }
 
       &::placeholder {
         font-size: 1.2em;
         color: var(--textColor);
         opacity: 0.8;
+
+        body.dark & {
+          color: var(--white);
+        }
       }
     }
   }

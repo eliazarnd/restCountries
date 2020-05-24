@@ -12,47 +12,7 @@ const btnBack = document.querySelector(".btn-back");
 let isDarkMode = false;
 
 function changeMode() {
-  const root = document.documentElement;
-
-  if (!isDarkMode) {
-    root.style.setProperty(
-      "--backgroundColor",
-      getComputedStyle(root).getPropertyValue("--veryDarkBlue")
-    );
-    root.style.setProperty(
-      "--textColor",
-      getComputedStyle(root).getPropertyValue("--white")
-    );
-
-    root.style.setProperty(
-      "--elementsColor",
-      getComputedStyle(root).getPropertyValue("--darkBlue")
-    );
-
-    root.style.setProperty(
-      "--inputColor",
-      getComputedStyle(root).getPropertyValue("--darkBlue")
-    );
-  } else {
-    root.style.setProperty(
-      "--backgroundColor",
-      getComputedStyle(root).getPropertyValue("--veryLightGray")
-    );
-    root.style.setProperty(
-      "--textColor",
-      getComputedStyle(root).getPropertyValue("--fontColor")
-    );
-
-    root.style.setProperty(
-      "--elementsColor",
-      getComputedStyle(root).getPropertyValue("--veryLightGray")
-    );
-
-    root.style.setProperty(
-      "--inputColor",
-      getComputedStyle(root).getPropertyValue("--veryLightGray")
-    );
-  }
+  document.body.classList.toggle("dark");
 
   isDarkMode = !isDarkMode;
 }

@@ -24,10 +24,13 @@
   }
 
   .countries-card {
-    box-shadow: 0 0 2px var(--fontColor);
+    box-shadow: 0 0 2px var(--darkBlue);
     border-radius: 5px;
     background-color: var(--elementsColor);
     transition: var(--fadeTransition);
+    body.dark & {
+      background-color: var(--darkBlue);
+    }
   }
 
   .countrie-card-header {
