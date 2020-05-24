@@ -1,12 +1,14 @@
 .controllers-filter {
   margin-top: 4em;
-  box-shadow: 0 1px 10px var(--darkGray);
+  box-shadow: 0 1px 10px var(--fontColor);
   border-radius: 5px;
   width: 70%;
   min-width: 200px;
   max-width: 300px;
   padding: 1em 2em;
   position: relative;
+  background-color: var(--elementsColor);
+  transition: var(--fadeTransition);
 
   .drop-down-region {
     display: none;
@@ -24,14 +26,14 @@
   }
 
   .options-container {
-    background-color: var(--white);
+    background-color: var(--elementsColor);
     top: 3em;
     left: 0;
     position: absolute;
     width: 100%;
     margin-top: 1em;
     display: none;
-    box-shadow: 0 1px 10px var(--darkGray);
+    box-shadow: 0 1px 10px var(--fontColor);
     border-radius: 5px;
     overflow-y: hidden;
     z-index: 10;
@@ -44,7 +46,7 @@
       a {
         text-decoration: none;
         font-weight: 300;
-        color: black;
+        color: var(--textColor);
         display: block;
         padding: 0.5em 2em;
 

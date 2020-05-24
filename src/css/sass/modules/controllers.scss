@@ -2,7 +2,7 @@
 
 @mixin input-style {
   height: 4em;
-  box-shadow: 0 1px 10px var(--darkGray);
+  box-shadow: 0 1px 10px var(--fontColor);
   border-radius: 5px;
 }
 
@@ -13,14 +13,17 @@ $translate-input: 15%;
   position: relative;
   i {
     font-size: 1.6em;
-    opacity: 0.3;
+    opacity: 0.7;
     position: relative;
     left: 10%;
+    color: var(--textColor);
   }
 
   &-search {
     @include input-style;
 
+    background-color: var(--inputColor);
+    transition: var(--fadeTransition);
     &-input {
       width: 100% - ($translate-input + 2%);
       height: 100%;
@@ -29,11 +32,13 @@ $translate-input: 15%;
       position: relative;
       padding: 1em;
       font-size: 1em;
+      background-color: var(--inputColor);
+      transition: var(--fadeTransition);
 
       &::placeholder {
         font-size: 1.2em;
-        color: var(--darkGray);
-        opacity: 0.5;
+        color: var(--textColor);
+        opacity: 0.8;
       }
     }
   }

@@ -1,6 +1,6 @@
 .header {
-  background-color: var(--white);
-  box-shadow: 0 1px 10px var(--darkGray);
+  background-color: var(--elementsColor);
+  box-shadow: 0 1px 10px var(--fontColor);
   display: flex;
   justify-content: space-between;
   align-items: baseline;
@@ -13,6 +13,7 @@
   left: 0;
   right: 0;
   z-index: 10;
+  transition: var(--fadeTransition);
   h1 {
     font-size: 1em;
   }
@@ -23,6 +24,11 @@
 
     i {
       margin-right: 10px;
+      transition: all 0.2s ease-in;
+      &:hover {
+        cursor: pointer;
+        transform: rotateZ(20deg) scale(2);
+      }
     }
   }
 }
