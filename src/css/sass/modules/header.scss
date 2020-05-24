@@ -1,6 +1,6 @@
 .header {
-  background-color: var(--elementsColor);
-  box-shadow: 0 1px 10px var(--fontColor);
+  background-color: var(--veryLightGray);
+  box-shadow: 0 1px 10px var(--darkBlue);
   display: flex;
   justify-content: space-between;
   align-items: baseline;
@@ -14,6 +14,11 @@
   right: 0;
   z-index: 10;
   transition: var(--fadeTransition);
+
+  body.dark & {
+    background-color: var(--darkBlue);
+  }
+
   h1 {
     font-size: 1em;
   }

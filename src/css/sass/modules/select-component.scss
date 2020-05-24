@@ -1,6 +1,6 @@
 .controllers-filter {
   margin-top: 4em;
-  box-shadow: 0 1px 10px var(--fontColor);
+  box-shadow: 0 1px 10px var(--darkBlue);
   border-radius: 5px;
   width: 70%;
   min-width: 200px;
@@ -9,6 +9,9 @@
   position: relative;
   background-color: var(--elementsColor);
   transition: var(--fadeTransition);
+  body.dark & {
+    background-color: var(--darkBlue);
+  }
 
   .drop-down-region {
     display: none;
@@ -26,17 +29,20 @@
   }
 
   .options-container {
-    background-color: var(--elementsColor);
+    background-color: var(--veryLightGray);
     top: 3em;
     left: 0;
     position: absolute;
     width: 100%;
     margin-top: 1em;
     display: none;
-    box-shadow: 0 1px 10px var(--fontColor);
+    box-shadow: 0 1px 10px var(--darkBlue);
     border-radius: 5px;
     overflow-y: hidden;
     z-index: 10;
+    body.dark & {
+      background-color: var(--darkBlue);
+    }
     ul {
       padding: 0;
     }
@@ -49,6 +55,9 @@
         color: var(--textColor);
         display: block;
         padding: 0.5em 2em;
+        body.dark & {
+          color: var(--white);
+        }
 
         &:hover {
           background-color: var(--darkGray);
