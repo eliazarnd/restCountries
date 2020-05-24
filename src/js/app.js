@@ -34,6 +34,7 @@ document.addEventListener("click", (e) => {
   } else {
     filterByRegionComponent.checked = false;
   }
+
   if (currentClickedElement.matches("#btnChangeMode")) {
     changeMode();
   }
