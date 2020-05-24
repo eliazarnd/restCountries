@@ -1,6 +1,6 @@
 .header {
-  background-color: var(--white);
-  box-shadow: 0 1px 10px var(--darkGray);
+  background-color: var(--elementsColor);
+  box-shadow: 0 1px 10px var(--fontColor);
   display: flex;
   justify-content: space-between;
   align-items: baseline;
@@ -13,6 +13,7 @@
   left: 0;
   right: 0;
   z-index: 10;
+  transition: var(--fadeTransition);
 }
 .header h1 {
   font-size: 1em;
@@ -23,17 +24,24 @@
 }
 .header p i {
   margin-right: 10px;
+  transition: all 0.2s ease-in;
+}
+.header p i:hover {
+  cursor: pointer;
+  transform: rotateZ(20deg) scale(2);
 }
 
 .controllers-filter {
   margin-top: 4em;
-  box-shadow: 0 1px 10px var(--darkGray);
+  box-shadow: 0 1px 10px var(--fontColor);
   border-radius: 5px;
   width: 70%;
   min-width: 200px;
   max-width: 300px;
   padding: 1em 2em;
   position: relative;
+  background-color: var(--elementsColor);
+  transition: var(--fadeTransition);
 }
 .controllers-filter .drop-down-region {
   display: none;
@@ -47,14 +55,14 @@
   cursor: pointer;
 }
 .controllers-filter .options-container {
-  background-color: var(--white);
+  background-color: var(--elementsColor);
   top: 3em;
   left: 0;
   position: absolute;
   width: 100%;
   margin-top: 1em;
   display: none;
-  box-shadow: 0 1px 10px var(--darkGray);
+  box-shadow: 0 1px 10px var(--fontColor);
   border-radius: 5px;
   overflow-y: hidden;
   z-index: 10;
@@ -68,7 +76,7 @@
 .controllers-filter .options-container .item a {
   text-decoration: none;
   font-weight: 300;
-  color: black;
+  color: var(--textColor);
   display: block;
   padding: 0.5em 2em;
 }
@@ -82,14 +90,17 @@
 }
 .controllers i {
   font-size: 1.6em;
-  opacity: 0.3;
+  opacity: 0.7;
   position: relative;
   left: 10%;
+  color: var(--textColor);
 }
 .controllers-search {
   height: 4em;
-  box-shadow: 0 1px 10px var(--darkGray);
+  box-shadow: 0 1px 10px var(--fontColor);
   border-radius: 5px;
+  background-color: var(--inputColor);
+  transition: var(--fadeTransition);
 }
 .controllers-search-input {
   width: 83%;
@@ -99,17 +110,18 @@
   position: relative;
   padding: 1em;
   font-size: 1em;
+  background-color: var(--inputColor);
+  transition: var(--fadeTransition);
 }
 .controllers-search-input::placeholder {
   font-size: 1.2em;
-  color: var(--darkGray);
-  opacity: 0.5;
+  color: var(--textColor);
+  opacity: 0.8;
 }
 
 #main {
   width: 200px;
   height: 200px;
-  background-color: rebeccapurple;
 }
 #main:hover {
   cursor: pointer;
@@ -132,8 +144,10 @@
   cursor: pointer;
 }
 .countries-container .countries-card {
-  box-shadow: 0 0 2px var(--darkGray);
+  box-shadow: 0 0 2px var(--fontColor);
   border-radius: 5px;
+  background-color: var(--elementsColor);
+  transition: var(--fadeTransition);
 }
 .countries-container .countrie-card-header img {
   border-top-left-radius: 5px;
@@ -171,7 +185,7 @@
 
 .countrie-detail {
   position: fixed;
-  background-color: var(--white);
+  background-color: var(--backgroundColor);
   left: 0;
   right: 0;
   height: 88vh;
@@ -195,7 +209,7 @@
 .countrie-detail .btn-back {
   text-decoration: none;
   font-size: 1em;
-  color: black;
+  color: var(--textColor);
   padding: 0.3em 2em;
   margin-left: 1.5em;
   box-shadow: 0 1px 5px var(--darkGray);
@@ -222,17 +236,13 @@
 }
 .countrie-detail .border-countries-container {
   width: 100%;
-  /* display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(max-content, 1fr));
-  column-gap: 10px;
-  row-gap: 10px; */
   display: flex;
   flex-wrap: wrap;
 }
 .countrie-detail .border-countries-container .border-countrie {
   text-decoration: none;
   font-size: 0.7em;
-  color: black;
+  color: var(--textColor);
   margin-left: 10px;
   margin-top: 10px;
   text-align: center;
@@ -285,12 +295,29 @@
 }
 
 :root {
+  /*Dark Mode*/
   --darkBlue: hsl(209, 23%, 22%);
   --veryDarkBlue: hsl(207, 26%, 17%);
-  --veryDarkBlue: hsl(200, 15%, 8%);
+  --veryBlue: hsl(200, 15%, 8%);
+  /*Light mode*/
   --darkGray: hsl(0, 0%, 52%);
   --veryLightGray: hsl(0, 0%, 98%);
   --white: hsl(0, 0%, 100%);
+  --fontColor: hsl(195, 17%, 9%);
+  /*
+    - Dark Blue (Dark Mode Elements): hsl(209, 23%, 22%)
+  - Very Dark Blue (Dark Mode Background): hsl(207, 26%, 17%)
+  - Very Dark Blue (Light Mode Text): hsl(200, 15%, 8%)
+  - Dark Gray (Light Mode Input): hsl(0, 0%, 52%)
+  - Very Light Gray (Light Mode Background): hsl(0, 0%, 98%)
+  - White (Dark Mode Text & Light Mode Elements): hsl(0, 0%, 100%)
+  */
+  --backgroundColor: var(--veryLightGray);
+  --elementsColor: var(--veryLightGray);
+  --textColor: var(--fontColor);
+  --inputColor: var(--veryLightGray);
+  --fadeTransition: background-color 0.5s ease-in;
+  --fadeText: color 0.5s ease-in;
 }
 
 * {
@@ -298,9 +325,12 @@
 }
 
 body {
+  color: var(--textColor);
+  background-color: var(--backgroundColor);
   padding: 0;
   margin: 0;
   font-family: "Nunito Sans";
+  transition: var(--fadeTransition), var(--fadeText);
 }
 
 p {

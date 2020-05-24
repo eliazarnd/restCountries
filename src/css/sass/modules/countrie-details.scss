@@ -7,7 +7,7 @@
 
 .countrie-detail {
   position: fixed;
-  background-color: var(--white);
+  background-color: var(--backgroundColor);
   left: 0;
   right: 0;
   height: 88vh;
@@ -33,7 +33,7 @@
   .btn-back {
     text-decoration: none;
     font-size: 1em;
-    color: black;
+    color: var(--textColor);
     padding: 0.3em 2em;
     margin-left: 1.5em;
     box-shadow: 0 1px 5px var(--darkGray);
@@ -64,19 +64,14 @@
 
   .border-countries-container {
     width: 100%;
-    /* display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(max-content, 1fr));
-    column-gap: 10px;
-    row-gap: 10px; */
     display: flex;
     flex-wrap: wrap;
     .border-countrie {
       text-decoration: none;
       font-size: 0.7em;
-      color: black;
+      color: var(--textColor);
       margin-left: 10px;
       margin-top: 10px;
-      //display: inline-block;
       text-align: center;
       padding: 0.4em 1.6em;
       box-shadow: 0 1px 5px var(--darkGray);

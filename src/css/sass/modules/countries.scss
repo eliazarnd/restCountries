@@ -1,7 +1,6 @@
 #main {
   width: 200px;
   height: 200px;
-  background-color: rebeccapurple;
   &:hover {
     cursor: pointer;
   }
@@ -25,8 +24,10 @@
   }
 
   .countries-card {
-    box-shadow: 0 0 2px var(--darkGray);
+    box-shadow: 0 0 2px var(--fontColor);
     border-radius: 5px;
+    background-color: var(--elementsColor);
+    transition: var(--fadeTransition);
   }
 
   .countrie-card-header {
