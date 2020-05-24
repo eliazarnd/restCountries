@@ -19,10 +19,21 @@ function changeMode() {
 
 document.addEventListener("click", (e) => {
   //e.preventDefault();
-  console.log(e.target);
 
   const currentClickedElement = e.target;
+  console.log(currentClickedElement);
 
+  /* Control when the options display */
+  const filterByRegionComponent = document.querySelector(".drop-down-region");
+
+  if (
+    filterByRegionComponent.checked &&
+    currentClickedElement.matches(".drop-down-region")
+  ) {
+    filterByRegionComponent.checked = true;
+  } else {
+    filterByRegionComponent.checked = false;
+  }
   if (currentClickedElement.matches("#btnChangeMode")) {
     changeMode();
   }
