@@ -163,11 +163,13 @@ async function renderCountriesByName(name) {
     console.log("No hay pais");
 
     const main = document.createElement("main");
+
     main.classList.add("countries-container");
     const error = createErrorMessage({
       error: "Countrie not found",
       icon: "fas fa-times error-icon",
     });
+
     main.appendChild(error);
     document.querySelector(".countries-container").replaceWith(main);
   } else {
