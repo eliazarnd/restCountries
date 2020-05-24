@@ -34,6 +34,7 @@
     box-shadow: 0 1px 10px var(--darkGray);
     border-radius: 5px;
     overflow-y: hidden;
+    z-index: 10;
     ul {
       padding: 0;
     }
