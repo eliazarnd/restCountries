@@ -57,6 +57,7 @@
   box-shadow: 0 1px 10px var(--darkGray);
   border-radius: 5px;
   overflow-y: hidden;
+  z-index: 10;
 }
 .controllers-filter .options-container ul {
   padding: 0;
@@ -253,6 +254,29 @@
 
 .display-grid {
   display: grid;
+}
+
+.position {
+  position: absolute;
+}
+
+.message-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0;
+  align-items: center;
+  align-content: flex-start;
+}
+.message-container .error-icon {
+  color: darkgray;
+  font-size: 4em;
+  margin: 0;
+}
+.message-container .error-message {
+  color: darkgray;
+  font-size: 2em;
+  margin: 0;
 }
 
 .countrie-name {
